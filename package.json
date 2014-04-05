@@ -1,0 +1,29 @@
+{
+  "name": "coffee-react",
+  "description": "React JSX support for Coffeescript",
+  "keywords": [
+    "coffeescript",
+    "react",
+    "jsx",
+    "csx",
+    "coffee-react"
+  ],
+  "author": "James Friend",
+  "version": "0.0.1",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/jsdf/coffee-react/master/LICENSE"
+    }
+  ],
+  "files": ["index.js","bin/"],
+  "bin": {
+    "csx-coffee": "./bin/csx-coffee"
+  },
+  "homepage": "https://github.com/jsdf/coffee-react",
+  "bugs": "https://github.com/jsdf/coffee-react/issues",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jsdf/coffee-react.git"
+  }
+}

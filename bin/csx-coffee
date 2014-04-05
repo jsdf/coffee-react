@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+var fs, transform, coffee;
+
+fs = require('fs');
+transform = require('coffee-react-transform/lib/transformer').transform;
+coffee = require('coffee-script');
+
+if (!process.argv[2]) {
+  return console.warn('provide a csx file to compile as the first argument');
+}
+
+process.stdout.write(coffee.compile(transform(fs.readFileSync(process.argv[2], 'utf8'))));
