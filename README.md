@@ -11,7 +11,7 @@ npm install -g coffee-react
 
 ### Usage
 
-**Note: standard coffee compiler options not yet implemented. For now, if you need those, use the `[csx-transform](https://github.com/jsdf/coffee-react-transform)` executable and then pipe the output into `coffee -cs`**
+**Note: standard coffee compiler options not yet implemented. For now, if you need those, use the [csx-transform](https://github.com/jsdf/coffee-react-transform) executable and then pipe the output into `coffee -cs`**
 
 ```bash
 csx-coffee [input file]

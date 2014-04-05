@@ -1,6 +1,6 @@
 {
   "name": "coffee-react",
-  "description": "React JSX support for Coffeescript",
+  "description": "Coffeescript compiler wrapper adding coffee-react-transform CSX support",
   "keywords": [
     "coffeescript",
     "react",
@@ -9,7 +9,7 @@
     "coffee-react"
   ],
   "author": "James Friend",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "licenses": [
     {
       "type": "MIT",
