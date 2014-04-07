@@ -77,6 +77,7 @@ exports.run = ->
   return compileStdio()                         if opts.stdio
   return compileScript null, opts.arguments[0]  if opts.eval
   # return require('./repl').start(replCliOpts)   unless opts.arguments.length
+  return usage()                                unless opts.arguments.length
   literals = if opts.run then opts.arguments.splice 1 else []
   process.argv = process.argv[0..1].concat literals
   process.argv[0] = 'csx-coffee'

@@ -1,11 +1,11 @@
 # @csx React.DOM 
 
-React = require 'react'
-
-CoolComponent = React.createClass
+NeatComponent = React.createClass
   render: ->
-    <div className="neat-component">
-      <p>is this component neat? {@props.neat}</p>
-    </div>
+    {showTitle, neat} = @props
 
-module.exports = CoolComponent
+    <div className="neat-component">
+      {<h1>A Component Is I</h1> if showTitle}
+      Coffeescript really saves a lot of typing...
+      {<p>is this component neat? {neat} x{times}</p> for times in [1..10]}
+    </div>
