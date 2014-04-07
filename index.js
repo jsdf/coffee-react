@@ -1,1 +1,6 @@
-console.warn('command line only. see https://github.com/jsdf/coffee-react-transform for the underlying library');
+var transform = require('coffee-react-transform');
+var compile = require('coffee-script').compile;
+
+module.exports = function(code, options) {
+  return compile(transform(code), options);
+}

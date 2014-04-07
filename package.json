@@ -16,14 +16,26 @@
       "url": "https://raw.github.com/jsdf/coffee-react/master/LICENSE"
     }
   ],
-  "files": ["index.js","bin/"],
+  "files": [
+    "index.js",
+    "bin/",
+    "lib/"
+  ],
   "bin": {
     "csx-coffee": "./bin/csx-coffee"
+  },
+  "scripts": {
+    "prepublish": "cake build"
   },
   "homepage": "https://github.com/jsdf/coffee-react",
   "bugs": "https://github.com/jsdf/coffee-react/issues",
   "repository": {
     "type": "git",
     "url": "git://github.com/jsdf/coffee-react.git"
+  },
+  "dependencies": {
+    "mkdirp": "~0.3.5",
+    "coffee-script": "^1.7.1",
+    "coffee-react-transform": "^0.1.3"
   }
 }
