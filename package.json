@@ -9,7 +9,7 @@
     "coffee-react"
   ],
   "author": "James Friend",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "licenses": [
     {
       "type": "MIT",
@@ -21,6 +21,7 @@
     "bin/",
     "lib/"
   ],
+  "main": "./lib/coffee-react-script",
   "bin": {
     "csx-coffee": "./bin/csx-coffee"
   },

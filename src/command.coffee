@@ -7,13 +7,13 @@
 # External dependencies.
 fs             = require 'fs'
 path           = require 'path'
-helpers        = require 'coffee-script/lib/coffee-script/helpers'
+helpers        = require './helpers'
 optparse       = require 'coffee-script/lib/coffee-script/optparse'
-CoffeeScript   = require 'coffee-script/lib/coffee-script/coffee-script'
+CoffeeScript   = require './coffee-react-script'
 mkdirp         = require 'mkdirp'
 {spawn, exec}  = require 'child_process'
 {EventEmitter} = require 'events'
-csxtransform   = require 'coffee-react-transform'
+csxTransform   = require 'coffee-react-transform'
 
 useWinPathSep  = path.sep is '\\'
 
@@ -130,7 +130,7 @@ compilePath = (source, topLevel, base) ->
     notSources[source] = yes
 
 findDirectoryIndex = (source) ->
-  for ext in CoffeeScript.FILE_EXTENSIONS.concat(['.csx'])
+  for ext in CoffeeScript.FILE_EXTENSIONS
     index = path.join source, "index#{ext}"
     try
       return index if (fs.statSync index).isFile()
@@ -147,8 +147,8 @@ compileScript = (file, csxinput, base = null) ->
   options = compileOptions file, base
   try
     # detect and transform csx
-    if (file? and hasCSXExtension file) or hasCSXPragma csxinput
-      input = csxtransform csxinput
+    if (file? and helpers.hasCSXExtension file) or helpers.hasCSXPragma csxinput
+      input = csxTransform csxinput
     else
       input = csxinput
 
@@ -423,9 +423,4 @@ version = ->
   printLine "coffee-react version #{version}"
   printLine "coffee-react-transform version #{csxversion}"
   printLine "coffee-script version #{CoffeeScript.VERSION}"
-
-
-hasCSXExtension = (filepath) -> /\.csx$/.test filepath
-
-hasCSXPragma = (src) -> /^\s*#\s*@csx/.test src
 

@@ -15,8 +15,10 @@ log = (message, color, explanation) ->
 
 # Build transformer from source.
 build = (cb) ->
+  files = ['coffee-react-script','helpers','command','register']
+  
   run 'mkdir', ['-p','bin', 'lib'], ->
-    compile ['command'], 'src/', 'lib/', cb
+    compile files, 'src/', 'lib/', cb
 
 compile = (srcFiles, srcDir, destDir, cb) ->
   srcFilePaths = srcFiles.map (filename) -> "#{srcDir}/#{filename}.coffee"

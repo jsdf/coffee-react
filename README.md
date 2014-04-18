@@ -1,6 +1,6 @@
 # Coffee-React
 
-Provides the `csx-coffee` executable, a wrapper for the Coffeescript compiler using [coffee-react-transform](https://github.com/jsdf/coffee-react-transform) so you can build [React](http://facebook.github.io/react/) Components in Coffeescript with JSX-like markup.
+Provides the `csx-coffee` executable, a wrapper for the Coffeescript compiler using [coffee-react-transform](https://github.com/jsdf/coffee-react-transform) so you can build [React](http://facebook.github.io/react/) components in Coffeescript with JSX-like markup.
 
 ### Example
 
@@ -15,10 +15,11 @@ NeatComponent = React.createClass
     <div className="neat-component">
       {<h1>A Component is I</h1> if showTitle}
       Coffeescript really saves a lot of typing...
-      {<p>is this component neat? {neat} x{times}</p> for times in [1..10]}
+      {<p>is this component neat?<br />{neat}x{times}</p> for times in [1..10]}
     </div>
 ```
 
+compile it
 ```bash
 $ csx-coffee -cb neat-component.csx
 ```
@@ -38,7 +39,7 @@ NeatComponent = React.createClass({
       var _i, _results;
       _results = [];
       for (times = _i = 1; _i <= 10; times = ++_i) {
-        _results.push(React.DOM.p(null, "is this component neat?", neat, "x", times));
+        _results.push(React.DOM.p(null, "is this component neat?", React.DOM.br(null), neat, "x", times));
       }
       return _results;
     })());
