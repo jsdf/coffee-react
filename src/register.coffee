@@ -1,6 +1,6 @@
-CoffeeScript   = require './coffee-react-script'
+CoffeeScript  = require './coffee-react-script'
 child_process = require 'child_process'
-helpers        = require './helpers'
+helpers       = require './helpers'
 path          = require 'path'
 
 # Load and run a CoffeeScript file for Node, stripping any `BOM`s.
