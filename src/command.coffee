@@ -1,4 +1,4 @@
-# The `csx-coffee` utility. Handles command-line compilation of CoffeeScript
+# The `cjsx` utility. Handles command-line compilation of CoffeeScript
 # into various forms: saved into `.js` files or printed to stdout
 # or recompiled every time the source is saved,
 # printed as a token stream or as the syntax tree, or launch an
@@ -13,7 +13,7 @@ CoffeeScript   = require './coffee-react-script'
 mkdirp         = require 'mkdirp'
 {spawn, exec}  = require 'child_process'
 {EventEmitter} = require 'events'
-csxTransform   = require 'coffee-react-transform'
+cjsxTransform  = require 'coffee-react-transform'
 
 useWinPathSep  = path.sep is '\\'
 
@@ -27,12 +27,12 @@ hidden = (file) -> /^\.|~$/.test file
 
 # The help banner that is printed in conjunction with `-h`/`--help`.
 BANNER = '''
-  Usage: csx-coffee [options] path/to/script.csx -- [args]
+  Usage: cjsx [options] path/to/script.cjsx -- [args]
 
-  If called without options, `csx-coffee` will run your script.
+  If called without options, `cjsx` will run your script.
 '''
 
-# The list of all the valid option flags that `csx-coffee` knows how to handle.
+# The list of all the valid option flags that `cjsx` knows how to handle.
 SWITCHES = [
   ['-b', '--bare',            'compile without a top-level function wrapper']
   ['-c', '--compile',         'compile to JavaScript and save as .js files']
@@ -61,7 +61,7 @@ notSources   = {}
 watchedDirs  = {}
 optionParser = null
 
-# Run `csx-coffee` by parsing passed options and determining what action to take.
+# Run `cjsx` by parsing passed options and determining what action to take.
 # Many flags cause us to divert before compiling anything. Flags passed after
 # `--` will be passed verbatim to your script as arguments in `process.argv`
 exports.run = ->
@@ -80,7 +80,7 @@ exports.run = ->
   return usage()                                unless opts.arguments.length
   literals = if opts.run then opts.arguments.splice 1 else []
   process.argv = process.argv[0..1].concat literals
-  process.argv[0] = 'csx-coffee'
+  process.argv[0] = 'cjsx'
 
   opts.output = path.resolve opts.output  if opts.output
   opts.join   = path.resolve opts.join    if opts.join
@@ -142,15 +142,15 @@ findDirectoryIndex = (source) ->
 # Compile a single source script, containing the given code, according to the
 # requested options. If evaluating the script directly sets `__filename`,
 # `__dirname` and `module.filename` to be correct relative to the script's path.
-compileScript = (file, csxinput, base = null) ->
+compileScript = (file, cjsxinput, base = null) ->
   o = opts
   options = compileOptions file, base
   try
-    # detect and transform csx
-    if (file? and helpers.hasCSXExtension file) or helpers.hasCSXPragma csxinput
-      input = csxTransform csxinput
+    # detect and transform cjsx
+    if (file? and helpers.hasCJSXExtension file) or helpers.hasCJSXPragma cjsxinput
+      input = cjsxTransform cjsxinput
     else
-      input = csxinput
+      input = cjsxinput
 
     t = task = {file, input, options}
     CoffeeScript.emit 'compile', task
@@ -419,8 +419,8 @@ usage = ->
 # Print the `--version` message and exit.
 version = ->
   version = require('../package.json').version
-  csxversion = require('coffee-react-transform/package.json').version
+  cjsxversion = require('coffee-react-transform/package.json').version
   printLine "coffee-react version #{version}"
-  printLine "coffee-react-transform version #{csxversion}"
+  printLine "coffee-react-transform version #{cjsxversion}"
   printLine "coffee-script version #{CoffeeScript.VERSION}"
 

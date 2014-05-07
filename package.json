@@ -1,11 +1,11 @@
 {
   "name": "coffee-react",
-  "description": "Coffeescript compiler wrapper adding coffee-react-transform CSX support",
+  "description": "Coffeescript compiler wrapper adding coffee-react-transform CJSX support",
   "keywords": [
     "coffeescript",
     "react",
     "jsx",
-    "csx",
+    "cjsx",
     "coffee-react"
   ],
   "author": "James Friend",
@@ -23,6 +23,7 @@
   ],
   "main": "./lib/coffee-react-script",
   "bin": {
+    "cjsx": "./bin/cjsx",
     "csx-coffee": "./bin/csx-coffee"
   },
   "scripts": {
@@ -37,6 +38,6 @@
   "dependencies": {
     "mkdirp": "~0.3.5",
     "coffee-script": "^1.7.1",
-    "coffee-react-transform": "^0.1.3"
+    "coffee-react-transform": "^0.1.5"
   }
 }

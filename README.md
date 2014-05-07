@@ -1,12 +1,12 @@
 # Coffee-React
 
-Provides the `csx-coffee` executable, a wrapper for the Coffeescript compiler using [coffee-react-transform](https://github.com/jsdf/coffee-react-transform) so you can build [React](http://facebook.github.io/react/) components in Coffeescript with JSX-like markup.
+Provides the `cjsx` executable, a wrapper for the Coffeescript compiler using [coffee-react-transform](https://github.com/jsdf/coffee-react-transform) so you can build [React](http://facebook.github.io/react/) components in Coffeescript with JSX-like markup.
 
 ### Example
 
-neat-component.csx
+neat-component.cjsx
 ```coffee
-# @csx React.DOM 
+# @cjsx React.DOM 
 
 NeatComponent = React.createClass
   render: ->
@@ -21,7 +21,7 @@ NeatComponent = React.createClass
 
 compile it
 ```bash
-$ csx-coffee -cb neat-component.csx
+$ cjsx -cb neat-component.cjsx
 ```
 
 neat-component.js
@@ -55,11 +55,11 @@ npm install -g coffee-react
 ### Usage
 
 ```
-$ csx-coffee -h 
+$ cjsx -h 
 
-Usage: csx-coffee [options] path/to/script.csx -- [args]
+Usage: cjsx [options] path/to/script.cjsx -- [args]
 
-If called without options, `csx-coffee` will run your script.
+If called without options, `cjsx` will run your script.
 
   -b, --bare         compile without a top-level function wrapper
   -c, --compile      compile to JavaScript and save as .js files
@@ -82,7 +82,7 @@ If called without options, `csx-coffee` will run your script.
 
 Output compiled JS to a file of the same name:
 ```bash
-$ csx-coffee -c my-component.csx
+$ cjsx -c my-component.cjsx
 ```
 
-If you just want to transform CSX markup into valid Coffeescript code as part of your existing build process see [coffee-react-transform](https://github.com/jsdf/coffee-react-transform), which is the main parser/transformer package.
+If you just want to transform CJSX markup into valid Coffeescript code as part of your existing build process see [coffee-react-transform](https://github.com/jsdf/coffee-react-transform), which is the main parser/transformer package.

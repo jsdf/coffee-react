@@ -1,9 +1,9 @@
 helpers = require 'coffee-script/lib/coffee-script/helpers'
 
-helpers.isCoffee = (filepath) -> /\.((lit)?coffee|coffee\.md|csx)$/.test filepath
+helpers.isCoffee = (filepath) -> /\.((lit)?coffee|coffee\.md|cjsx|csx)$/.test filepath
 
-helpers.hasCSXExtension = (filepath) -> /\.csx$/.test filepath
+helpers.hasCJSXExtension = (filepath) -> /\.(cjsx|csx)$/.test filepath
 
-helpers.hasCSXPragma = (src) -> /^\s*#\s*@csx/.test src
+helpers.hasCJSXPragma = (src) -> /^\s*#\s*@(cjsx|csx)/.test src
 
 module.exports = helpers

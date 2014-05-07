@@ -41,7 +41,7 @@ if require.extensions
 # to fork both CoffeeScript files, and JavaScript files, directly.
 if child_process
   {fork} = child_process
-  binary = require.resolve '../bin/csx-coffee'
+  binary = require.resolve '../bin/cjsx'
   child_process.fork = (path, args, options) ->
     if helpers.isCoffee path
       unless Array.isArray args

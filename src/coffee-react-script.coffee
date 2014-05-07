@@ -1,13 +1,13 @@
 # patches coffee-script module
 
 fs = require 'fs'
-csxTransform = require 'coffee-react-transform'
+transform = require 'coffee-react-transform'
 
 helpers = require './helpers'
 
 CoffeeScript = require 'coffee-script/lib/coffee-script/coffee-script'
 
-CoffeeScript.FILE_EXTENSIONS.push '.csx'
+CoffeeScript.FILE_EXTENSIONS.push '.csx', '.cjsx'
 
 CoffeeScript.register = -> require './register'
 
@@ -15,8 +15,8 @@ CoffeeScript.register = -> require './register'
 csCompile = CoffeeScript.compile
 
 CoffeeScript.compile = (code, options) ->
-  # detect and transform csx by pragma
-  input = helpers.hasCSXPragma and csxTransform(code) or code
+  # detect and transform cjsx by pragma
+  input = helpers.hasCJSXPragma and transform(code) or code
 
   csCompile input, options
 
@@ -24,8 +24,8 @@ CoffeeScript._compileFile = (filename, sourceMap = no) ->
   raw = fs.readFileSync filename, 'utf8'
   stripped = if raw.charCodeAt(0) is 0xFEFF then raw.substring 1 else raw
 
-  # detect and transform csx by extension
-  input = helpers.hasCSXExtension(filename) and csxTransform(stripped) or stripped
+  # detect and transform cjsx by extension
+  input = helpers.hasCJSXExtension(filename) and transform(stripped) or stripped
 
   try
     answer = CoffeeScript.compile(input, {filename, sourceMap, literate: helpers.isLiterate filename})
@@ -37,6 +37,6 @@ CoffeeScript._compileFile = (filename, sourceMap = no) ->
 
   answer
 
-CoffeeScript.csxTransform = csxTransform
+CoffeeScript.transform = transform
 
 module.exports = CoffeeScript
