@@ -1,6 +1,6 @@
-# @csx React.DOM 
+# @cjsx React.DOM 
 
-React = require 'react'
+React = require '../test/react'
 
 CoolComponent = React.createClass
   render: ->

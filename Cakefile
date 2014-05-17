@@ -32,8 +32,16 @@ run = (executable, args = [], cb) ->
   proc =         spawn executable, args
   proc.stdout.on 'data', (buffer) -> log buffer.toString(), green
   proc.stderr.on 'data', (buffer) -> log buffer.toString(), red
-  proc.on        'exit', (status) ->
-		cb() if typeof cb is 'function'
+  proc.on        'exit', (status) -> cb(status) if typeof cb is 'function'
+
+test = ->
+  run './bin/cjsx', ['example/cool-component.coffee'], (status) ->
+    if status == 0
+      log 'pass', green
+    else
+      log 'fail', red
 
 task 'build', 'build coffee-react from source', build
+
+task 'test', 'test coffee-react', test
 

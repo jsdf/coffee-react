@@ -37,6 +37,8 @@ CoffeeScript._compileFile = (filename, sourceMap = no) ->
 
   answer
 
+CoffeeScript.hasCJSXPragma = helpers.hasCJSXPragma
+CoffeeScript.hasCJSXExtension = helpers.hasCJSXExtension
 CoffeeScript.transform = transform
 
 module.exports = CoffeeScript

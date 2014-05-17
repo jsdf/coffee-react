@@ -1,5 +1,3 @@
-# @csx React.DOM 
-
 NeatComponent = React.createClass
   render: ->
     {showTitle, neat} = @props

@@ -9,7 +9,7 @@
     "coffee-react"
   ],
   "author": "James Friend",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "licenses": [
     {
       "type": "MIT",
@@ -38,6 +38,6 @@
   "dependencies": {
     "mkdirp": "~0.3.5",
     "coffee-script": "^1.7.1",
-    "coffee-react-transform": "^0.1.5"
+    "coffee-react-transform": "^0.1.6"
   }
 }
