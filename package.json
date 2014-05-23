@@ -27,7 +27,8 @@
     "csx-coffee": "./bin/csx-coffee"
   },
   "scripts": {
-    "prepublish": "cake build"
+    "prepublish": "cake build",
+    "test": "tap test/*.coffee"
   },
   "homepage": "https://github.com/jsdf/coffee-react",
   "bugs": "https://github.com/jsdf/coffee-react/issues",
@@ -38,6 +39,10 @@
   "dependencies": {
     "mkdirp": "~0.3.5",
     "coffee-script": "^1.7.1",
-    "coffee-react-transform": "^0.1.6"
+    "coffee-react-transform": "^0.2.0"
+  },
+  "devDependencies": {
+    "concat-stream": "^1.4.5",
+    "tap": "^0.4.9"
   }
 }
