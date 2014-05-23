@@ -85,4 +85,13 @@ Output compiled JS to a file of the same name:
 $ cjsx -c my-component.cjsx
 ```
 
+#### Require .cjsx files under node
+As with the `coffee-script` module, you need to register .cjsx with the module loader:
+```coffee
+require('coffee-react').register()
+
+Component = require('./component.cjsx')
+
+```
+
 If you just want to transform CJSX markup into valid Coffeescript code as part of your existing build process see [coffee-react-transform](https://github.com/jsdf/coffee-react-transform), which is the main parser/transformer package.
