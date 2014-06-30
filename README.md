@@ -1,12 +1,16 @@
 # Coffee-React
 
-Provides the `cjsx` executable, a wrapper for the Coffeescript compiler using [coffee-react-transform](https://github.com/jsdf/coffee-react-transform) so you can build [React](http://facebook.github.io/react/) components in Coffeescript with JSX-like markup.
+Provides the `cjsx` executable, a wrapper for the CoffeeScript `coffee` executable, 
+using [coffee-react-transform](https://github.com/jsdf/coffee-react-transform)
+to add support for CJSX (a CoffeeScript equivalent of JSX), so you
+can build [React](http://facebook.github.io/react/) components with the full
+awesomeness of CoffeeScript
 
 ### Example
 
 neat-component.cjsx
 ```coffee
-# @cjsx React.DOM 
+# @cjsx React.DOM
 
 NeatComponent = React.createClass
   render: ->
@@ -51,11 +55,10 @@ NeatComponent = React.createClass({
 ```bash
 npm install -g coffee-react
 ```
-
 ### Usage
 
 ```
-$ cjsx -h 
+$ cjsx -h
 
 Usage: cjsx [options] path/to/script.cjsx -- [args]
 
@@ -85,13 +88,23 @@ Output compiled JS to a file of the same name:
 $ cjsx -c my-component.cjsx
 ```
 
+### Related projects
+- [coffee-react-transform](https://github.com/jsdf/coffee-react-transform), the underlying parser/transformer package.
+- [node-cjsx](https://github.com/SimonDegraeve/node-cjsx): `require` CJSX files on the server (also possible with [coffee-react/register](https://github.com/jsdf/coffee-react)).
+- [coffee-reactify](https://github.com/jsdf/coffee-reactify): bundle CJSX files via [browserify](https://github.com/substack/node-browserify), see also [cjsxify](https://github.com/SimonDegraeve/cjsxify).  
+- [react-coffee-quickstart](https://github.com/SimonDegraeve/react-coffee-quickstart): equivalent to [react-quickstart](https://github.com/andreypopp/react-quickstart).
+- [sprockets preprocessor](https://github.com/jsdf/sprockets-coffee-react): use CJSX with Rails/Sprockets
+- [ruby coffee-react gem](https://github.com/jsdf/ruby-coffee-react): transform CJSX to Coffeescript under Ruby
+- [vim plugin](https://github.com/mtscout6/vim-cjsx) for syntax highlighting
+- [sublime text package](https://github.com/reactjs/sublime-react/) for syntax highlighting
+- [mimosa plugin](https://github.com/mtscout6/mimosa-cjsx) for the mimosa build tool
+- [karma preprocessor](https://github.com/mtscout6/karma-cjsx-preprocessor) for karma test runner
+
 #### Require .cjsx files under node
-As with the `coffee-script` module, you need to register .cjsx with the module loader:
+As with the `coffee-script` module, you need to register `.cjsx` with the module loader:
 ```coffee
-require('coffee-react').register()
+require('coffee-react/register')
 
 Component = require('./component.cjsx')
 
 ```
-
-If you just want to transform CJSX markup into valid Coffeescript code as part of your existing build process see [coffee-react-transform](https://github.com/jsdf/coffee-react-transform), which is the main parser/transformer package.
