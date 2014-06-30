@@ -23,7 +23,7 @@ runFile = (file, opts) ->
       if output.toString().length
         t.fail output.toString()
 
-    run 'cjsx', [file], outStream, errStream, (err, status) ->
+    run require.resolve('../bin/cjsx'), [file], outStream, errStream, (err, status) ->
       t.fail(err) if err
       t.fail(status) if status isnt 0
       t.end()
