@@ -2,7 +2,7 @@
 
 {test} = require('tap')
 
-require('../lib/coffee-react-script').register()
+require('../register')
 
 react = require '../example/react.coffee'
 
