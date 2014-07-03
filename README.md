@@ -98,6 +98,7 @@ $ cjsx -c my-component.cjsx
 - [vim plugin](https://github.com/mtscout6/vim-cjsx) for syntax highlighting
 - [sublime text package](https://github.com/reactjs/sublime-react/) for syntax highlighting
 - [mimosa plugin](https://github.com/mtscout6/mimosa-cjsx) for the mimosa build tool
+- [gulp plugin](https://github.com/mtscout6/gulp-cjsx) for the gulp build tool
 - [karma preprocessor](https://github.com/mtscout6/karma-cjsx-preprocessor) for karma test runner
 
 #### Require .cjsx files under node
