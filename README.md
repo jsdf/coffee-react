@@ -1,11 +1,11 @@
 # Coffee-React
 
-Coffee-React adds a JSX-like syntax to CoffeeScript, so you can build [React](http://facebook.github.io/react/) components with the fullawesomeness of CoffeeScript.
+Coffee-React provides a JSX-like syntax for building [React](http://facebook.github.io/react/) components with the full awesomeness of CoffeeScript.
 
-The provided `cjsx` executable is wrapper for the CoffeeScript `coffee` executable, using 
+Included is the `cjsx` executable, which is wrapper for `coffee`, using 
 [coffee-react-transform](https://github.com/jsdf/coffee-react-transform) and 
-[coffee-script](https://github.com/jashkenas/coffeescript) to transform CJSX to Javascript,
-and also allows you to `require()` CJSX components under node for server-side rendering.
+[coffee-script](https://github.com/jashkenas/coffeescript) to transform CJSX to Javascript.
+You can also `require()` CJSX components under [node](http://nodejs.org) for server-side rendering.
 
 ### Example
 
