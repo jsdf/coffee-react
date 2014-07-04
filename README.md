@@ -89,6 +89,15 @@ Output compiled JS to a file of the same name:
 $ cjsx -c my-component.cjsx
 ```
 
+#### Require .cjsx files under node
+As with the `coffee-script` module, you need to register `.cjsx` with the module loader:
+```coffee
+require('coffee-react/register')
+
+Component = require('./component.cjsx')
+
+```
+
 ### Related projects
 - [coffee-react-transform](https://github.com/jsdf/coffee-react-transform), the underlying parser/transformer package.
 - [node-cjsx](https://github.com/SimonDegraeve/node-cjsx): `require` CJSX files on the server (also possible with [coffee-react/register](https://github.com/jsdf/coffee-react)).
@@ -101,12 +110,3 @@ $ cjsx -c my-component.cjsx
 - [mimosa plugin](https://github.com/mtscout6/mimosa-cjsx) for the mimosa build tool
 - [gulp plugin](https://github.com/mtscout6/gulp-cjsx) for the gulp build tool
 - [karma preprocessor](https://github.com/mtscout6/karma-cjsx-preprocessor) for karma test runner
-
-#### Require .cjsx files under node
-As with the `coffee-script` module, you need to register `.cjsx` with the module loader:
-```coffee
-require('coffee-react/register')
-
-Component = require('./component.cjsx')
-
-```
