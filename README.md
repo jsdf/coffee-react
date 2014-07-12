@@ -7,6 +7,9 @@ Included is the `cjsx` executable, which is wrapper for `coffee`, using
 [coffee-script](https://github.com/jashkenas/coffeescript) to transform CJSX to Javascript.
 You can also `require()` CJSX components under [node](http://nodejs.org) for server-side rendering.
 
+### Try it out
+The [try coffee-react](http://jsdf.github.io/coffee-react-transform/) tool is available to test out some CJSX code and see the CoffeeScript it transforms into.
+
 ### Example
 
 neat-component.cjsx
