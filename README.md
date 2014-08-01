@@ -2,8 +2,8 @@
 
 Coffee-React provides a JSX-like syntax for building [React](http://facebook.github.io/react/) components with the full awesomeness of CoffeeScript.
 
-Included is the `cjsx` executable, which is wrapper for `coffee`, using 
-[coffee-react-transform](https://github.com/jsdf/coffee-react-transform) and 
+Included is the `cjsx` executable, which is wrapper for `coffee`, using
+[coffee-react-transform](https://github.com/jsdf/coffee-react-transform) and
 [coffee-script](https://github.com/jashkenas/coffeescript) to transform CJSX to Javascript.
 You can also `require()` CJSX components under [node](http://nodejs.org) for server-side rendering.
 
@@ -100,6 +100,20 @@ require('coffee-react/register')
 Component = require('./component.cjsx')
 
 ```
+
+### Spread attributes
+A recent addition to JSX (and CJSX) is 'spread attributes' which allow merging an object of props into a component, eg:
+```coffee
+extraProps = color: 'red', speed: 'fast'
+<div color="blue" {... extraProps} />
+```
+which is transformed to:
+```coffee
+extraProps = color: 'red', speed: 'fast'
+React.DOM.div(Object.assign({"color": "blue"},  extraProps)
+```
+If you use this syntax in your code, be sure to include a shim for `Object.assign` for browsers/environments which don't yet support it (basically all of them).
+[es6-shim](https://github.com/es-shims/es6-shim) and [object.assign](https://www.npmjs.org/package/object.assign) are two possible choices.
 
 ### Related projects
 - [coffee-react-transform](https://github.com/jsdf/coffee-react-transform), the underlying parser/transformer package.
