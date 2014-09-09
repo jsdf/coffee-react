@@ -1,10 +1,18 @@
 #!/bin/bash
 set -e
-VERSION=`npm view coffee-react-transform version`
-npm install --save "coffee-react-transform@${VERSION}"
+git pull origin master
+DEPENDENCY="coffee-react-transform"
+VERSION=`npm view ${DEPENDENCY} version`
+echo "updating to $VERSION"
+npm install --save "${DEPENDENCY}@${VERSION}"
 npm test
 git add ./package.json
-git commit -m "updated coffee-react-transform to v${VERSION}"
+git commit -m "updated ${DEPENDENCY} to v${VERSION}"
 npm version $VERSION
-git push origin master
-npm publish .
+read -p "will publish $VERSION. are you sure? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  git push origin master
+  npm publish .
+fi
