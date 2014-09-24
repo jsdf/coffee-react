@@ -7,9 +7,6 @@ Included is the `cjsx` executable, which is wrapper for `coffee`, using
 [coffee-script](https://github.com/jashkenas/coffeescript) to transform CJSX to Javascript.
 You can also `require()` CJSX components under [node](http://nodejs.org) for server-side rendering.
 
-### Try it out
-The [try coffee-react](http://jsdf.github.io/coffee-react-transform/) tool is available to test out some CJSX code and see the CoffeeScript it transforms into.
-
 ### Example
 
 neat-component.cjsx
@@ -18,12 +15,10 @@ neat-component.cjsx
 
 NeatComponent = React.createClass
   render: ->
-    {showTitle, neat} = @props
-
     <div className="neat-component">
-      {<h1>A Component is I</h1> if showTitle}
-      Coffeescript really saves a lot of typing...
-      {<p>is this component neat?<br />{neat}x{times}</p> for times in [1..10]}
+      {<h1>A Component is I</h1> if @props.showTitle}
+      <hr />
+      {<p>This line has been printed {n} times</p> for n in [1..10]}
     </div>
 ```
 
@@ -39,15 +34,14 @@ var NeatComponent;
 
 NeatComponent = React.createClass({
   render: function() {
-    var neat, showTitle, times, _ref;
-    _ref = this.props, showTitle = _ref.showTitle, neat = _ref.neat;
-    return React.DOM.div({
+    var n;
+    return React.createElement(React.DOM.div, {
       "className": "neat-component"
-    }, (showTitle ? React.DOM.h1(null, "A Component is I") : void 0), "Coffeescript really saves a lot of typing...", (function() {
+    }, (this.props.showTitle ? React.createElement(React.DOM.h1, null, "A Component is I") : void 0), React.createElement(React.DOM.hr, null), (function() {
       var _i, _results;
       _results = [];
-      for (times = _i = 1; _i <= 10; times = ++_i) {
-        _results.push(React.DOM.p(null, "is this component neat?", React.DOM.br(null), neat, "x", times));
+      for (n = _i = 1; _i <= 10; n = ++_i) {
+        _results.push(React.createElement(React.DOM.p, null, "This line has been printed ", n, " times"));
       }
       return _results;
     })());
@@ -110,10 +104,20 @@ extraProps = color: 'red', speed: 'fast'
 which is transformed to:
 ```coffee
 extraProps = color: 'red', speed: 'fast'
-React.DOM.div(Object.assign({"color": "blue"},  extraProps)
+React.createElement(React.DOM.div, Object.assign({"color": "blue"}, extraProps)
 ```
 If you use this syntax in your code, be sure to include a shim for `Object.assign` for browsers/environments which don't yet support it (basically all of them).
 [es6-shim](https://github.com/es-shims/es6-shim) and [object.assign](https://www.npmjs.org/package/object.assign) are two possible choices.
+
+### Breaking Changes in 1.0
+
+React 0.12 will introduce changes to the way component descriptors are constructed, where the return value of `React.createClass` is not a descriptor factory but simply the component class itself, and descriptors must be created manually using `React.createElement` or by wrapping the component class with `React.createDescriptor`.
+
+In preparation for this, coffee-react-transform (and as a result, coffee-react) now outputs calls to `React.createElement` to construct element descriptors from component classes for you, so you won't need to [wrap your classes using `React.createFactory`](https://gist.github.com/sebmarkbage/ae327f2eda03bf165261). However, for this to work you will need to be using at least React 0.11.2, which adds `React.createElement`.
+
+If you want the older style JSX output (which just desugars into function calls) then you need to use the 0.x branch, eg. 0.5.1.
+
+Additionally, as of 1.0.0, all input files will be CJSX transformed, even if they don't have a `.cjsx` extension or `# @cjsx` pragma.
 
 ### Related projects
 - [coffee-react-transform](https://github.com/jsdf/coffee-react-transform), the underlying parser/transformer package.
