@@ -7,18 +7,18 @@ helpers = require './helpers'
 
 CoffeeScript = require 'coffee-script/lib/coffee-script/coffee-script'
 
-CoffeeScript.FILE_EXTENSIONS.push '.csx', '.cjsx'
+CoffeeScript.FILE_EXTENSIONS.push '.cjsx'
 
 CoffeeScript.register = -> require './register'
 
 # real coffeescript compile func, which we're wrapping
-csCompile = CoffeeScript.compile
+CoffeeScript._csCompile = CoffeeScript.compile
 
 CoffeeScript.compile = (code, options) ->
   # detect and transform cjsx by pragma
   input = helpers.hasCJSXPragma and transform(code) or code
 
-  csCompile input, options
+  CoffeeScript._csCompile input, options
 
 CoffeeScript._compileFile = (filename, sourceMap = no) ->
   raw = fs.readFileSync filename, 'utf8'
