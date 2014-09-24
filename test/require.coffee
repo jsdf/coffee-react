@@ -4,17 +4,18 @@
 
 require('../register')
 
-react = require '../example/react.coffee'
+React = require 'react'
+
+expected = require './expected/some-class'
 
 requireTest = () ->
   test 'require cjsx coffee file', (t) ->
-    t.plan(2)
+    t.plan(1)
 
-    SomeClass = require '../example/some-class.coffee'
-    rendered = react.renderComponent SomeClass()
+    SomeClass = require '../example/some-class'
+    rendered = React.renderComponentToStaticMarkup(React.createElement(SomeClass))
 
-    t.assert rendered.type.displayName is 'div', 'correct output 1'
-    t.assert rendered.props.color is 'blue', 'correct output 2'
+    t.assert rendered.length and rendered is expected, 'correct output'
     t.end()
         
 requireTest()

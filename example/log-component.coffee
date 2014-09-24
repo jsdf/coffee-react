@@ -1,8 +1,6 @@
 util = require('util')
 
 SomeClass = require './some-class.coffee'
-react = require './react.coffee'
+React = require 'react'
 
-inspect = (value) -> util.inspect value, { showHidden: true, depth: null }
-
-console.log inspect react.renderComponent SomeClass()
+process.stdout.write React.renderComponentToStaticMarkup(React.createElement(SomeClass))

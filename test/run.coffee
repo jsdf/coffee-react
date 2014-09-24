@@ -5,6 +5,8 @@ fs = require 'fs'
 {test} = require('tap')
 concat = require 'concat-stream'
 
+expected = require('./expected/some-class')
+
 run = (executable, args = [], outStream, errStream, cb) ->
   proc = spawn executable, args
   proc.stdout.pipe outStream
@@ -17,7 +19,7 @@ runFile = (file, opts) ->
     t.plan(1)
 
     outStream = concat {encoding: 'buffer'}, (output) ->
-      t.assert output.toString().length, 'got output'
+      t.assert output.toString() is expected, 'got output'
 
     errStream = concat {encoding: 'buffer'}, (output) ->
       if output.toString().length

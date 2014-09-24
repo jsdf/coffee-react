@@ -1,0 +1,1 @@
+module.exports = '<ul style="color:red;" width="12"><li>2 <input type="checkbox" checked></li><li>3 <input type="checkbox" checked></li><li>5 <input type="checkbox" checked></li></ul>'
