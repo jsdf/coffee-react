@@ -13,7 +13,7 @@ requireTest = () ->
     t.plan(1)
 
     SomeClass = require '../example/some-class'
-    rendered = React.renderComponentToStaticMarkup(React.createElement(SomeClass))
+    rendered = React.renderToStaticMarkup(React.createElement(SomeClass))
 
     t.assert rendered.length and rendered is expected, 'correct output'
     t.end()
