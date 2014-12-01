@@ -37,8 +37,7 @@
     "url": "git://github.com/jsdf/coffee-react.git"
   },
   "dependencies": {
-    "mkdirp": "~0.3.5",
-    "coffee-script": "^1.7.1",
+    "coffee-script": "1.8.0",
     "coffee-react-transform": "^2.0.0"
   },
   "devDependencies": {
