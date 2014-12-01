@@ -23,8 +23,7 @@
   ],
   "main": "./lib/coffee-react-script",
   "bin": {
-    "cjsx": "./bin/cjsx",
-    "csx-coffee": "./bin/csx-coffee"
+    "cjsx": "./bin/cjsx"
   },
   "scripts": {
     "prepublish": "cake build",
