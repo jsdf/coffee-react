@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "coffee-script": "1.8.0",
-    "coffee-react-transform": "^2.0.0"
+    "coffee-react-transform": "^2.1.0"
   },
   "devDependencies": {
     "concat-stream": "^1.4.5",
