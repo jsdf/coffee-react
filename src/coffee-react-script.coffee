@@ -33,7 +33,7 @@ unless CoffeeScript._cjsx
       # As the filename and code of a dynamically loaded file will be different
       # from the original file compiled with CoffeeScript.run, add that
       # information to error so it can be pretty-printed later.
-      throw helpers.updateSyntaxError err, input, filename
+      throw helpers.updateSyntaxError err, stripped, filename
 
     answer
 
