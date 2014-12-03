@@ -53,6 +53,13 @@ NeatComponent = React.createClass({
 ```bash
 npm install -g coffee-react
 ```
+
+#### Version compatibility
+- 2.1.x - React 0.12.1
+- 2.x - React 0.12
+- 1.x - React 0.11.2
+- 0.x - React 0.11 and below
+
 ### Usage
 
 ```
@@ -104,10 +111,8 @@ extraProps = color: 'red', speed: 'fast'
 which is transformed to:
 ```coffee
 extraProps = color: 'red', speed: 'fast'
-React.createElement(React.DOM.div, Object.assign({"color": "blue"}, extraProps)
+React.createElement(React.DOM.div, React.__spread({"color": "blue"}, extraProps)
 ```
-If you use this syntax in your code, be sure to include a shim for `Object.assign` for browsers/environments which don't yet support it (basically all of them).
-[es6-shim](https://github.com/es-shims/es6-shim) and [object.assign](https://www.npmjs.org/package/object.assign) are two possible choices.
 
 ### Breaking Changes in 1.0
 

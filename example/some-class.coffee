@@ -1,7 +1,4 @@
-# @cjsx React.DOM 
-
 React = require 'react'
-require('object.assign').shim() # Object.assign must be shimmed for spread attr to work
 
 module.exports = React.createClass
   render: ->
