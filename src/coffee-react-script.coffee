@@ -19,7 +19,7 @@ unless CoffeeScript._cjsx
   CoffeeScript._csCompile = CoffeeScript.compile
 
   CoffeeScript.compile = (code, options) ->
-    input = transform(code)
+    input = transform(code, options)
 
     CoffeeScript._csCompile input, options
 
