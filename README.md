@@ -133,7 +133,7 @@ Additionally, as of 1.0.0, all input files will be CJSX transformed, even if the
 - [sprockets preprocessor](https://github.com/jsdf/sprockets-coffee-react): use CJSX with Rails/Sprockets
 - [ruby coffee-react gem](https://github.com/jsdf/ruby-coffee-react): transform CJSX to Coffeescript under Ruby
 - [vim plugin](https://github.com/mtscout6/vim-cjsx) for syntax highlighting
-- [sublime text package](https://github.com/reactjs/sublime-react/) for syntax highlighting
+- [sublime text package](https://github.com/Guidebook/sublime-cjsx) for syntax highlighting
 - [mimosa plugin](https://github.com/mtscout6/mimosa-cjsx) for the mimosa build tool
 - [gulp plugin](https://github.com/mtscout6/gulp-cjsx) for the gulp build tool
 - [karma preprocessor](https://github.com/mtscout6/karma-cjsx-preprocessor) for karma test runner
