@@ -1,5 +1,6 @@
 fs = require 'fs'
 {spawn, exec} = require 'child_process'
+glob = require 'glob'
 
 # ANSI Terminal Colors.
 bold = red = green = reset = ''
@@ -15,7 +16,7 @@ log = (message, color, explanation) ->
 
 # Build transformer from source.
 build = (cb) ->
-  files = ['coffee-react-script','helpers','command','register']
+  files = glob.sync('./src/*.coffee')
   
   run 'mkdir', ['-p','bin', 'lib'], ->
     compile files, 'src/', 'lib/', cb

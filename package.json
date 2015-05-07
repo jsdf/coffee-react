@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "concat-stream": "^1.4.5",
+    "glob": "^5.0.5",
     "react": "^0.13.1",
     "tap": "^0.7.1"
   }
