@@ -1,5 +1,3 @@
-# @cjsx React.DOM 
-
 React = require 'react'
 
 CoolComponent = React.createClass
