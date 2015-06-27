@@ -7,6 +7,8 @@ helpers = require './helpers'
 
 CoffeeScript = require 'coffee-script/lib/coffee-script/coffee-script'
 
+jsSyntaxTransform = require './js-syntax-transform'
+
 unless CoffeeScript._cjsx
 
   CoffeeScript._cjsx = yes
@@ -18,10 +20,18 @@ unless CoffeeScript._cjsx
   # real coffeescript compile func, which we're wrapping
   CoffeeScript._csCompile = CoffeeScript.compile
 
-  CoffeeScript.compile = (code, options) ->
+  CoffeeScript.compile = (code, options = {}) ->
     input = transform(code, options)
 
-    CoffeeScript._csCompile input, options
+    output = CoffeeScript._csCompile input, options
+
+    return output if options.noJSTransforms
+
+    if typeof output == 'string'
+      jsSyntaxTransform(output)
+    else
+      output.js = jsSyntaxTransform(output.js)
+      output
 
   CoffeeScript._compileFile = (filename, sourceMap = no) ->
     raw = fs.readFileSync filename, 'utf8'
