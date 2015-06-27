@@ -12,11 +12,11 @@ run = (executable, args = [], outStream, errStream, cb) ->
   proc.on 'err', (err) -> cb(err)
   proc.on 'exit', (status) -> cb(null, status)
 
-test 'run cjsx file', (t) ->
+test 'compile cjsx file', (t) ->
   t.plan(1)
 
-  file = '../example/log-component.coffee'
-  expected = fs.readFileSync './expected/rendered-output.html', encoding: 'utf8'
+  file = '../example/named-component.coffee'
+  expected = fs.readFileSync './expected/compiled-output.js', encoding: 'utf8'
 
   outStream = concat {encoding: 'buffer'}, (output) ->
     t.equal output.toString(), expected, 'got output'
@@ -25,7 +25,7 @@ test 'run cjsx file', (t) ->
     if output.toString().length
       t.fail output.toString()
 
-  run require.resolve('../bin/cjsx'), [file], outStream, errStream, (err, status) ->
+  run require.resolve('../bin/cjsx'), ['-cp', file], outStream, errStream, (err, status) ->
     t.fail(err) if err
     t.fail(status) if status isnt 0
     t.end()
