@@ -7,7 +7,7 @@ helpers = require './helpers'
 
 CoffeeScript = require 'coffee-script/lib/coffee-script/coffee-script'
 
-jsSyntaxTransform = require './js-syntax-transform'
+jsSyntaxTransform = require 'coffee-react-jstransform'
 
 unless CoffeeScript._cjsx
 
