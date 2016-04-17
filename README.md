@@ -57,7 +57,9 @@ npm install -g coffee-react
 ```
 
 #### Version compatibility
-- 3.x - React 0.13.x
+- 5.x - React 0.13.x - 0.15.x
+- 4.x - React 0.13.x - 0.14.x
+- 3.x - React 0.13.x - 0.14.x
 - 2.1.x - React 0.12.1
 - 2.x - React 0.12
 - 1.x - React 0.11.2
@@ -106,22 +108,25 @@ Component = require('./component.cjsx')
 ```
 
 ### Spread attributes
-A recent addition to JSX (and CJSX) is 'spread attributes' which allow merging an object of props into a component, eg:
+JSX/CJSX 'spread attributes' allow merging in an object of props when creating an element, eg:
 ```coffee
 extraProps = color: 'red', speed: 'fast'
-<div color="blue" {... extraProps} />
+<div color="blue" {...extraProps} />
 ```
 which is transformed to:
 ```coffee
 extraProps = color: 'red', speed: 'fast'
-React.createElement(React.DOM.div, React.__spread({"color": "blue"}, extraProps)
+React.createElement("div", Object.assign({"color": "blue"},  extraProps)
 ```
 
-### Breaking Changes in 1.0
+If you use this syntax in your code, be sure to include a shim for `Object.assign` for browsers/environments which don't yet support it. [object.assign](https://www.npmjs.org/package/object.assign), [core-js](https://github.com/zloirock/core-js) and 
+[es6-shim](https://github.com/es-shims/es6-shim) are some possible choices.
 
-React 0.12 will introduce changes to the way component descriptors are constructed, where the return value of `React.createClass` is not a descriptor factory but simply the component class itself, and descriptors must be created manually using `React.createElement` or by wrapping the component class with `React.createDescriptor`.
+### React.createElement
 
-In preparation for this, coffee-react-transform (and as a result, coffee-react) now outputs calls to `React.createElement` to construct element descriptors from component classes for you, so you won't need to [wrap your classes using `React.createFactory`](https://gist.github.com/sebmarkbage/ae327f2eda03bf165261). However, for this to work you will need to be using at least React 0.11.2, which adds `React.createElement`.
+React 0.12 introduced changes to the way component descriptors are constructed, where the return value of `React.createClass` is not a descriptor factory but simply the component class itself, and descriptors must be created manually using `React.createElement` or by wrapping the component class with `React.createDescriptor`.
+
+coffee-react-transform (and as a result, coffee-react) now outputs calls to `React.createElement` to construct element descriptors from component classes for you, so you won't need to [wrap your classes using `React.createFactory`](https://gist.github.com/sebmarkbage/ae327f2eda03bf165261). However, for this to work you will need to be using at least React 0.11.2, which adds `React.createElement`.
 
 If you want the older style JSX output (which just desugars into function calls) then you need to use the 0.x branch, eg. 0.5.1.
 

@@ -10,6 +10,7 @@
   ],
   "author": "James Friend",
   "version": "4.1.0",
+  "licenses": "MIT",
   "licenses": [
     {
       "type": "MIT",
@@ -36,9 +37,9 @@
     "url": "git://github.com/jsdf/coffee-react.git"
   },
   "dependencies": {
-    "coffee-react-transform": "^3.1.0",
     "coffee-react-jstransform": "^1.0.0",
-    "coffee-script": "^1.9.1",
+    "coffee-react-transform": "^4.0.0",
+    "coffee-script": "^1.10.0",
     "mkdirp": "^0.5.0"
   },
   "devDependencies": {
