@@ -1,5 +1,9 @@
 # Coffee-React
 
+#### Status
+
+This project is seeking maintainers. If you are interested in becoming a maintainer [create an issue](https://github.com/jsdf/coffee-react-transform/issues). Pull requests will be reviewed and merged (time permitting), but this project is not currently under active development.
+
 Coffee-React provides a JSX-like syntax for building [React](http://facebook.github.io/react/) components with the full awesomeness of CoffeeScript.
 
 [Try it out](https://jsdf.github.io/coffee-react-transform/).
